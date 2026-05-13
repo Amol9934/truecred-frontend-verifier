@@ -1,0 +1,256 @@
+/* Google Fonts - Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Tailwind CSS Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    background-color: #F9FAFB;
+    color: #111827;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+}
+
+/* Custom Scrollbar Styles */
+@layer utilities {
+  /* Webkit browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #F9FAFB;
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #D1D5DB;
+    border-radius: 9999px;
+    transition: background 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0F6E56;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #D1D5DB #F9FAFB;
+  }
+
+  /* Custom scrollbar for dark surfaces */
+  .scrollbar-dark::-webkit-scrollbar-track {
+    background: #1B3A5C;
+  }
+
+  .scrollbar-dark::-webkit-scrollbar-thumb {
+    background: #0F6E56;
+  }
+
+  .scrollbar-dark::-webkit-scrollbar-thumb:hover {
+    background: #1D9E75;
+  }
+}
+
+/* Component layer utilities */
+@layer components {
+  /* Focus ring consistent style */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2;
+  }
+
+  /* Card base style */
+  .card {
+    @apply bg-surface rounded-xl shadow-card border border-gray-100 p-6;
+  }
+
+  .card-hover {
+    @apply card transition-shadow duration-200 hover:shadow-card-hover;
+  }
+
+  /* Button base */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium
+           transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed select-none;
+  }
+
+  .btn-primary {
+    @apply btn bg-teal text-white hover:bg-teal-light focus:ring-teal active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply btn bg-teal-bg text-teal hover:bg-teal/10 focus:ring-teal active:scale-95;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-teal text-teal bg-transparent hover:bg-teal-bg
+           focus:ring-teal active:scale-95;
+  }
+
+  .btn-danger {
+    @apply btn bg-danger text-white hover:bg-red-800 focus:ring-danger active:scale-95;
+  }
+
+  /* Input base */
+  .input {
+    @apply w-full px-3 py-2 rounded-lg border border-gray-300 bg-surface text-text-primary
+           placeholder:text-text-muted transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-teal focus:border-transparent
+           disabled:opacity-50 disabled:bg-gray-50;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-success {
+    @apply badge bg-green-100 text-success;
+  }
+
+  .badge-danger {
+    @apply badge bg-red-100 text-danger;
+  }
+
+  .badge-warning {
+    @apply badge bg-amber-100 text-warning;
+  }
+
+  .badge-info {
+    @apply badge bg-blue-100 text-trust;
+  }
+
+  /* Section container */
+  .container-section {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-teal to-teal-light bg-clip-text text-transparent;
+  }
+
+  /* Page transition wrapper */
+  .page-wrapper {
+    @apply min-h-screen bg-background;
+  }
+
+  /* Verified stamp effect */
+  .verified-stamp {
+    @apply relative inline-flex items-center gap-2 text-success font-semibold;
+  }
+
+  .verified-stamp::before {
+    content: '';
+    @apply absolute inset-0 border-2 border-success rounded-lg opacity-20;
+  }
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+/* QR Scanner overlay */
+#qr-reader {
+  border: none !important;
+  width: 100% !important;
+}
+
+#qr-reader video {
+  border-radius: 0.75rem;
+  width: 100% !important;
+}
+
+#qr-reader__scan_region {
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+#qr-reader__dashboard {
+  padding: 0.5rem 0 0 !important;
+}
+
+#qr-reader__dashboard_section_csr button {
+  @apply btn-primary text-sm py-1.5;
+  margin-top: 0.5rem !important;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #e5e7eb;
+  }
+}
